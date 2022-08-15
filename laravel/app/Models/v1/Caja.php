@@ -6,11 +6,11 @@ namespace App\Models\v1;
 use Illuminate\Database\Eloquent\Model;
 use BinaryCabin\LaravelUUID\Traits\HasUUID;
 
-class Cliente extends Model
+class Caja extends Model
 {
     use HasUUID;
 
-    protected $table = 'clientes';
+    protected $table = 'caja';
     protected $primaryKey = "id";
     public $incrementing = false;
     protected $keyType = 'string';

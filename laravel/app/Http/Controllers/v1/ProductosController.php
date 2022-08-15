@@ -4,6 +4,7 @@ namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\v1\Producto;
+use Illuminate\Http\Request;
 
 class ProductosController extends Controller
 {
@@ -34,16 +35,16 @@ class ProductosController extends Controller
         $response = new \stdClass();
         $response->success=true;
 
-        $producto = new Producto();
-        $producto->fecha = $request->fecha;
-        $producto->dni = $request->dni;
-        $producto->nombre = $request->nombre;
-        $producto->celular = $request->celular;
-        $producto->correo = $request->correo;
-        $producto->dirección = $request->dirección;
-        $producto->save();
+        $productos = new Producto();
+        $productos->fecha = $request->fecha;
+        $productos->dni = $request->dni;
+        $productos->nombre = $request->nombre;
+        $productos->celular = $request->celular;
+        $productos->correo = $request->correo;
+        $productos->dirección = $request->dirección;
+        $productos->save();
 
-        $response->data=$producto;
+        $response->data=$productos;
 
         return response()->json($response,201);
     }
@@ -53,19 +54,18 @@ class ProductosController extends Controller
         $response = new \stdClass();
         $response->success = true;
 
-        $producto = Producto::find($request->id);
+        $productos = Producto::find($request->id);
 
-        $producto->fecha = $request->fecha;
-        $producto->dni = $request->dni;
-        $producto->nombre = $request->nombre;
-        $producto->celular = $request->celular;
-        $producto->correo = $request->correo;
-        $producto->dirección = $request->dirección;
-        $producto->save();
+        $productos->dni = $request->dni;
+        $productos->nombre = $request->nombre;
+        $productos->celular = $request->celular;
+        $productos->correo = $request->correo;
+        $productos->dirección = $request->dirección;
+        $productos->save();
 
-        $response->data = $producto;
+        $response->data = $productos;
 
-        return response()->json($producto,200);
+        return response()->json($productos,200);
     }
 
     function patch(Request $request)
@@ -73,19 +73,28 @@ class ProductosController extends Controller
         $response = new \stdClass();
         $response->success = true;
 
-        $producto = Producto::find($request->id);
+        $productos = Producto::find($request->id);
 
-        if(isset($request->codigo))
-        $producto->codigo = $request->codigo;
+        if (isset($request->dni))
+        $productos->dni = $request->dni;
 
-        if (isset($request->nombre)) 
-        $producto->nombre = $request->nombre;
-        
-        $producto->save();
+        if (isset($request->nombre))
+        $productos->nombre = $request->nombre;
 
-        $response->data = $producto;
+        if (isset($request->celular))
+        $productos->celular = $request->celular;
 
-        return response()->json($producto,200);
+        if(isset($request->correo))
+        $productos->correo = $request->correo;
+
+        if(isset($request->dirección))
+        $productos->dirección = $request->dirección;
+
+        $productos->save();
+
+        $response->data = $productos;
+
+        return response()->json($productos,200);
     }
 
     function delete($id)
@@ -95,11 +104,11 @@ class ProductosController extends Controller
 
         $response_code;
 
-        $producto = Producto::find($id);
+        $productos = Producto::find($id);
 
-        if($producto)
+        if($productos)
         {
-            $producto->delete();
+            $productos->delete();
             $response_code = 200;
         }
         else
@@ -111,5 +120,5 @@ class ProductosController extends Controller
 
     }
 
-   
-}    
+
+}

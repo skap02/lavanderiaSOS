@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<title>Document</title>
+</head>
+<body>
+
+<label>DNI:</label>
+<input type="text" name="txtDni" id="txtDni">
+<br>
+<label>Nombre:</label>
+<input type="text" name="txtNombre" id="txtNombre">
+<br>
+<label>Celular:</label>
+<input type="text" name="txtCelular" id="txtCelular">
+<br>
+<label>Correo:</label>
+<input type="text" name="txtCorreo" id="txtCorreo">
+<br>
+<label>Dirección:</label>
+<input type="text" name="txtDireccion" id="txtDireccion">
+<br>
+<label id="message"></label>
+<br>
+<button id="bGuardar" onclick="guardar()">Guardar</button>
+	
+<script type="text/javascript">
+	
+/*	
+$("bGuardar").click(function() {
+	 //Act on the event
+});
+*/
+
+function guardar()
+{
+	
+$.ajax({
+	method:"POST",
+	url: "http://lavanderiasos.com/api/v1/clientes",
+	data:{dni:$("#txtDni").val(),nombre:$("#txtNombre").val(),celular:$("#txtCelular").val(),correo:$("#txtCorreo").val(),dirección:$("txtDireccion").val()}
+})
+.done(function(response) {
+	
+	console.log(response);
+
+	$("#message").text("El producto se registro correctamente");
+	$("#txtDni").val("");
+	$("#txtNombre").val("");
+	$("#txtCelular").val("");
+	$("#txtCorreo").val("");
+	$("#txtDireccion").val("");
+	});
+}
+
+
+
+</script>
+
+
+
+</body>
+</html>

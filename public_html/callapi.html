@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CallApi</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+	
+$.ajax({
+	method:"GET",
+	url: "http://lavanderiasos.com/api/v1/clientes"
+})
+.done(function(response) {
+	
+	for(i=0;i<response.data.length;i++)
+	{
+		document.write(response.data[i].nombre+"<br>");
+	}
+});
+
+
+
+</script>
+
+
+</body>
+</html>
