@@ -41,13 +41,13 @@ function guardar()
 $.ajax({
 	method:"POST",
 	url: "http://lavanderiasos.com/api/v1/clientes",
-	data:{dni:$("#txtDni").val(),nombre:$("#txtNombre").val(),celular:$("#txtCelular").val(),correo:$("#txtCorreo").val(),dirección:$("txtDireccion").val()}
+	data:{dni:$("#txtDni").val(),nombre:$("#txtNombre").val(),celular:$("#txtCelular").val(),correo:$("#txtCorreo").val(),direccion:$("#txtDireccion").val()}
 })
 .done(function(response) {
 	
 	console.log(response);
 
-	$("#message").text("El producto se registro correctamente");
+	$("#message").text("El cliente se registro correctamente");
 	$("#txtDni").val("");
 	$("#txtNombre").val("");
 	$("#txtCelular").val("");
@@ -56,11 +56,7 @@ $.ajax({
 	});
 }
 
-
-
 </script>
-
-
 
 </body>
 </html>
