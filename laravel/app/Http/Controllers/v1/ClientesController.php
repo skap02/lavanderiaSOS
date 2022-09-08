@@ -32,7 +32,7 @@ class ClientesController extends Controller
             $search="%";
         else
             $search="%".$search."%";
-        
+
         $response = new \stdClass();
         $response->success=true;
 
@@ -121,11 +121,11 @@ class ClientesController extends Controller
 
         if (isset($request->dni))
         $clientes->dni = $request->dni;
-        
-        if (isset($request->nombre)) 
+
+        if (isset($request->nombre))
         $clientes->nombre = $request->nombre;
 
-        if (isset($request->celular)) 
+        if (isset($request->celular))
         $clientes->celular = $request->celular;
 
         if(isset($request->correo))

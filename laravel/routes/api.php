@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\v1\ProductosController;
 use App\Http\Controllers\v1\ClientesController;
-
+use App\Http\Controllers\v1\ServiciosController;
 
 
 /*
@@ -30,7 +30,7 @@ Route::post("/v1/productos",[ProductosController::class,"store"]);
 Route::put("/v1/productos",[ProductosController::class,"update"]);
 Route::patch("/v1/productos",[ProductosController::class,"patch"]);
 Route::delete("v1/productos",[ProductosController::class,"delete"]);
-    
+
 //Para el llamado de Clientes
 
 Route::get("/v1/clientes",[ClientesController::class,"getAll"]);
@@ -39,3 +39,12 @@ Route::post("/v1/clientes",[ClientesController::class,"store"]);
 Route::put("/v1/clientes",[ClientesController::class,"update"]);
 Route::patch("/v1/clientes",[ClientesController::class,"patch"]);
 Route::delete("v1/clientes/{id}",[ClientesController::class,"delete"]);
+
+//Para el llamado de servicios
+
+Route::get("/v1/servicios",[ServiciosController::class,"getAll"]);
+Route::get("/v1/servicios/{id}",[ServiciosController::class,"getItem"]);
+Route::post("/v1/servicios",[ServiciosController::class,"store"]);
+Route::put("/v1/servicios",[ServiciosController::class,"update"]);
+Route::patch("/v1/servicios",[ServiciosController::class,"patch"]);
+Route::delete("v1/servicios/{id}",[ServiciosController::class,"delete"]);
